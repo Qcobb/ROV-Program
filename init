@@ -1,0 +1,21 @@
+//# include <parameters.ino>
+
+void setup ()
+{
+//-------------------------------------- Serial Port ------------------------//  
+
+Serial.begin(9600);
+ 
+//-------------------------------------- IO ------------------------//
+
+for (int i = 2; i <10; i++)
+  {
+  pinMode (i,OUTPUT);
+  digitalWrite (i,LOW);
+  }
+//-------------------------------------- Timer1 ------------------------//
+//timer_div = clock_arduino / timer_freq;
+// select timer frequency using parameter
+// timer1_register(2)=timer_div;  
+
+}
