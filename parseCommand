@@ -1,0 +1,13 @@
+void parseCommand(){
+  charDifferent = false;
+  int componentNumber;
+  if (recChar = 35 ){
+    componentNumber = 0;
+  }
+  if (recChar = 44 ){
+    componentNumber = componentNumber + 1;
+  }
+  
+  
+
+}
