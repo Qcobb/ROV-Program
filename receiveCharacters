@@ -1,0 +1,7 @@
+void receiveCharacters (){
+  if (Serial.available() >  0 ) {
+    prevChar = recChar ;
+    char recChar = Serial.read ();
+  }
+  charChange();
+}
