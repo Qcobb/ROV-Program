@@ -2,5 +2,7 @@ int componentNumber;
 
 void parseCommand()
 {
- Serial.println(inputBuffer [3]); 
+for (int i = 0; i <11; i++)  {
+    Serial.println(inputBuffer [i]);
+  } 
 }
