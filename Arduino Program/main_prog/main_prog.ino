@@ -34,6 +34,24 @@ void loop ()
   
 unsigned long currentTime = millis ();
 
+
+
+
+    
+  if (currentTime - previousSPITime > SerialPortInterval) 
+    {
+        receiveCharacters();// check incoming char/put char in buffer/set readMessage_flag if CR or LF
+        previousSPITime = currentTime;
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  
   if (currentTime - previousLDCTime > leakDetectorInterval) 
     {
         previousLDCTime = currentTime;
@@ -45,12 +63,7 @@ unsigned long currentTime = millis ();
             } 
     }
     
-  if (currentTime - previousSPITime > SerialPortInterval) 
-    {
-        receiveCharacters();// check incoming char/put char in buffer/set readMessage_flag if CR or LF
-        previousSPITime = currentTime;
-    }
-      if (currentTime - previousBLTime > BLInterval) 
+  if (currentTime - previousBLTime > BLInterval) 
     {
         Blink();// check incoming char/put char in buffer/set readMessage_flag if CR or LF
         previousBLTime = currentTime;
