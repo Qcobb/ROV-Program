@@ -1,32 +1,25 @@
-int leakScaling = 1000;
-int leakProb = 0;
-boolean isLeaking = false;
-unsigned long prevLeakingTimer = 0;
-unsigned long prevNonLeakingTimer = 0;
+
 
 void leakAnalyzer(){ 
-  //-------------------------------------- Increment Leak Probability if voltage is high for extended time (>1sec)------------------------//
-
-  if (leakStatus = true && leakProb < 10)
-  {
-    unsigned long leakingTimer = millis ();
-    if (leakingTimer - prevLeakingTimer > leakScaling) 
+//-------------------------------------- Check leak detector------------------------//  
+  if (analogRead(A5) < leakThreshold)
     {
-    prevLeakingTimer = leakingTimer;
+    leakStatus = 1;
+    }
+  else leakStatus = 0;
+  
+//-------------------------------------- Increment Leak Probability if voltage is high for extended time (>1sec)------------------------//
+  if (leakStatus ==1 && leakProb < 10)
+    {
     leakProb = leakProb + 1;
     }
-  }
+
 //-------------------------------------- Decrement Leak Probabilty if voltage is normal for extended time (>1sec)------------------------//
 
-  if (leakStatus = false && leakProb > 0)
-    {
-      unsigned long nonLeakingTimer = millis();
-      if (nonLeakingTimer - prevNonLeakingTimer > leakScaling) 
-      {
-        prevNonLeakingTimer = nonLeakingTimer;
-        leakProb = leakProb - 1;
-      }
-   }
+  if (leakStatus ==0 && leakProb > 0)
+     {
+     leakProb = leakProb - 1;
+     }
    //-------------------------------------- Determine Boolean status of leaking------------------------//
 
    if (leakProb >= 5)

@@ -6,16 +6,18 @@ char inputBuffer [100];
 int inputID = 0;
 
 
-//-------------------------------------- Leak Detector variable------------------------//
+//-------------------------------------- Leak Detector variables------------------------//
 
 
-boolean leakStatus = false ; /* Used to indicate that there is not leak. It is assumed 
+int leakStatus = 0 ; /* Used to indicate that there is not leak. It is assumed 
 the arduino's box isnt leaking at initialisation. True indicates leak, false indicates
 no leak*/
-int leakDetectorVoltage ; /* This is set up to be the current voltage of the leak detector*/
-int leakDetectorInterval ;
+int leakDetectorInterval=1000; ;
 unsigned long previousLDCTime ;
 int leakThreshold = 50 ;      // Number of volts at which it can definetly be descided that the leak detector is triggered by a leak
+int leakProb = 0;
+boolean isLeaking = false;
+
 //-------------------------------------- Serial port variables------------------------//
 
 unsigned long previousSPITime;
@@ -26,7 +28,7 @@ boolean charDifferent;
 
 //-------------------------------------- Blinking Light------------------------//
 unsigned long previousBLTime;
-int BLInterval = 1000;
+int BLInterval = 500;
 void loop ()
 {
   
@@ -34,8 +36,13 @@ unsigned long currentTime = millis ();
 
   if (currentTime - previousLDCTime > leakDetectorInterval) 
     {
-        CheckLeak();
         previousLDCTime = currentTime;
+        leakAnalyzer();
+        if(isLeaking==true) 
+            {
+             Serial.println("Leak detected!");
+             //"add aditional code to ...?... drive robot back to the surface? turn everything off?"
+            } 
     }
     
   if (currentTime - previousSPITime > SerialPortInterval) 
@@ -48,7 +55,7 @@ unsigned long currentTime = millis ();
         Blink();// check incoming char/put char in buffer/set readMessage_flag if CR or LF
         previousBLTime = currentTime;
     }
-    leakAnalyzer();
+    
  // if (read_message_flag)
   //    CommandRobot();
       
