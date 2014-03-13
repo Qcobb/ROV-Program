@@ -10,8 +10,13 @@ void receiveCharacters ()
       if (inputID >= 100)inputID=0;
       if (recChar ==13)
         {
-         parseCommand();
+          
          Serial.println("Command received");
+         for (int i = 0; i <inputID; i++)  {
+            Serial.println(inputBuffer [i]);
+          } 
+         parseCommand();
+         Serial.println("Command executed");
          inputID=0;
         }
       

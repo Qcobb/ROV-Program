@@ -1,8 +1,8 @@
-int componentNumber;
-
 void parseCommand()
+
 {
-for (int i = 0; i <inputID; i++)  {
-    Serial.println(inputBuffer [i]);
-  } 
+    if((inputBuffer[1] == 'm' || inputBuffer[1]=='M')  && (inputBuffer[2] == 'c' || inputBuffer[2] == 'C')){
+     controlMotor();
+    }
+
 }
