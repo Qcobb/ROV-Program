@@ -29,6 +29,13 @@ boolean charDifferent;
 //-------------------------------------- Blinking Light------------------------//
 unsigned long previousBLTime;
 int BLInterval = 500;
+
+//-------------------------------------- Motor Control------------------------//
+
+int motorID;
+int motorDirection;
+//--------------------------------------Main Loop------------------------//
+
 void loop ()
 {
   

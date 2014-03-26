@@ -5,7 +5,7 @@ void receiveCharacters ()
     {
       char recChar = Serial.read ();
           if (recChar =='#') {inputID=0;Serial.println("Beginning command");}
-      inputBuffer[inputID]= recChar;
+      inputBuffer[inputID]= (toupper(recChar));
       inputID++;
       if (inputID >= 100)inputID=0;
       if (recChar ==13)
