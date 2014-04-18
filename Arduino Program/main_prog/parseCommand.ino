@@ -8,6 +8,9 @@ void parseCommand()
     boolean controlMotors = false;
     
     switch(inputBuffer[1]){
+      case 'D':
+      debug = -debug;
+      break;
       case 'M':
       motorFunction = true;
       switch(inputBuffer[2]){
@@ -34,6 +37,7 @@ void parseCommand()
           break;
           case 'S':
           motorDirection = 3;
+          break;
           default:
           Serial.println("You forgot to enter,or entered an invalid motor direction ((F)orward or (R)everse and (S)top are valid) in positon 5!"); 
         }

@@ -1,6 +1,6 @@
 //Initiate any variables that need exist in the code up here so that it dosent
 //loop back to the preset value every loop or clutter code in setup
-
+int debug = -1;
 //-------------------------------------- array for buffer ------------------------//
 char inputBuffer [100];
 int inputID = 0;
@@ -18,10 +18,12 @@ int leakThreshold = 50 ;      // Number of volts at which it can definetly be de
 int leakProb = 0;
 boolean isLeaking = false;
 
-//-------------------------------------- Serial port variables------------------------//
+//-------------------------------------- Serial port parameters------------------------//
+
+int SerialPortInterval=10;            // in ms
+int baudrate=9600;
 
 unsigned long previousSPITime;
-int SerialPortInterval=10;
 char recChar;
 char prevChar;
 boolean charDifferent;

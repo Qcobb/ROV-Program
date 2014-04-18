@@ -1,25 +1,28 @@
 void rMotorForward(){
 
-  
-digitalWrite(8, HIGH);
-digitalWrite(9, LOW);
-Serial.println("right  motor going forward");
-
+    
+  digitalWrite(4, HIGH);
+  digitalWrite(5, LOW);
+  if (debug == 1){
+    Serial.println("right  motor going forward");
+  }
 }
- 
+   
 void rMotorReverse(){
-
   
-digitalWrite(8, LOW);
-digitalWrite(9, HIGH);
-Serial.println("right  motor going backwards");
-
- }
- void rMotorStop(){
-
+    
+  digitalWrite(4, LOW);
+  digitalWrite(5, HIGH);
+  if (debug == 1){
+    Serial.println("right  motor going backwards");
+  }
+}
+void rMotorStop(){
   
-digitalWrite(8, LOW);
-digitalWrite(9, LOW);
-Serial.println("right  motor stopping");
-
- }
+    
+  digitalWrite(4, LOW);
+  digitalWrite(5, LOW);
+  if (debug == 1){
+    Serial.println("right  motor stopping");
+  }
+}

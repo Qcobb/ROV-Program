@@ -1,5 +1,7 @@
 void controlMotor () {
+  if (debug == 1){
   Serial.println("something");
+  }
      switch (motorID){
   //-------------------------------------- Controls left motor------------------------//
   
